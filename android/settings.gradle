@@ -1,3 +1,8 @@
 rootProject.name = 'SecondProj'
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
 include ':app'
+// React-Native-Map - include react-native-maps
+include ':react-native-maps'
+
+// React-Native-Map - Declare Project
+project(':react-native-maps').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-maps/lib/android')

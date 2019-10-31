@@ -7,24 +7,8 @@
  */
 
 import React, {Component} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
-
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import {Avatar} from './src/components';
-import {tsConstructorType} from '@babel/types';
+import {StyleSheet, View, Text} from 'react-native';
+import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 
 const rectangle = {
   width: 300,
@@ -40,68 +24,26 @@ export default class App extends Component<Props> {
       isActive: false,
     };
   }
-
   render() {
-    const {isActive} = this.state;
+    // const {isActive} = this.state;
     return (
-      // // Lesson: View Component
-      // <View>
-      //   <Avatar
-      //     width={50}
-      //     height={50}
-      //     boderRadius={50 / 2}
-      //     backgroundColor={'red'}
-      //   />
-      //   <Avatar
-      //     width={50}
-      //     height={50}
-      //     boderRadius={50 / 2}
-      //     backgroundColor={'red'}
-      //   />
-      // </View>
-
-      //Lesson: Stylesheet - Style inline
-      <View>
-        <View
-          style={{
-            width: 200,
-            height: 100,
-            backgroundColor: 'black',
-          }}></View>
-        {/* Stylesheet - Style Objects */}
-        <View style={rectangle}></View>
-        {/* Stylesheet - StyleSheet.create only */}
-        <View style={styles.header}></View>
-        {/* Stylesheet - StyleSheet.create + array object */}
-        <View style={[styles.header, styles.backgroundRed]} />
-        {/* Stylesheet - StyleSheet.create -  mix object vs inline */}
-        <View style={[styles.header, {borderColor: 'yellow'}]} />
-
-        {/* Stylesheet - StyleSheet.create -  condition style */}
-        <View
-          style={[
-            styles.header,
-            {borderColor: 'yellow'},
-            isActive ? styles.backgroundRed : styles.backgroundGreen,
-          ]}></View>
-      </View>
+      <MapView
+        provider={PROVIDER_GOOGLE}
+        style={styles.map}
+        initialRegion={{
+          latitude: 37.78825,
+          longitude: -122.4324,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}
+      />
     );
   }
 }
 
 const styles = StyleSheet.create({
-  header: {
-    width: '100%',
-    height: 50,
-    borderWidth: 10,
-    // borderColor: 'gray',
-    marginTop: 4,
-  },
-  backgroundRed: {
-    backgroundColor: 'red',
-  },
-  backgroundGreen: {
-    backgroundColor: 'green',
+  map: {
+    height: '90%',
   },
 });
 
