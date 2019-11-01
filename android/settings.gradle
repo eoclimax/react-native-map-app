@@ -6,3 +6,8 @@ include ':react-native-maps'
 
 // React-Native-Map - Declare Project
 project(':react-native-maps').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-maps/lib/android')
+
+
+// Geofencing - include
+include ':react-native-geo-fencing'
+project(':react-native-geo-fencing').projectDir = new File(settingsDir, '../node_modules/react-native-geo-fencing/android')
